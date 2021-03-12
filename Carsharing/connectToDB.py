@@ -1,7 +1,9 @@
 from peewee import *
 
-conn = MySQLDatabase.connect('Carsharing', host="localhost", user="root", passwd="")
+database = MySQLDatabase('Carsharing', **{'charset': 'utf8', 'sql_mode': 'PIPES_AS_CONCAT',
+'use_unicode': True, 'user': 'root', 'password': ''})
 
 class BaseModel(Model):
     class Meta:
-        database = conn
+        database = database
+
