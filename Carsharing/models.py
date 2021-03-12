@@ -18,6 +18,14 @@ class Carsharing(BaseModel):
     trip_end_time = DateField(column_name='TripEndTime', null=True)
     trip_start_time = DateField(column_name='TripStartTime', null=True)
 
+    #Получить текущий обьект класса
+    def getCur(self):
+        return self.get(self)
+
+    #Получить все обьекты
+    def getAll(self):
+        query = self.select().execute()
+
     #Функция для добавления ОДНОГО элемента в модель и в базу данных
     #На вход подается словарь вида {"field_name":"field_value"}
     def insertOne(self, data):
@@ -32,7 +40,14 @@ class Carsharing(BaseModel):
 
     #Заготовка под редактирование. Это еще необходимо
     #обкашлять, что именно будем редачить и т.д.
-    def update(self, data):
+    def updateCur(self, data):
         query = self.update().where
+        query.execute()
+
+    #Удаление по ID
+    def deleteByID(self, id):
+        tmp = self.get(self.id_client==id)
+        tmp.delete_instance()
+
     class Meta:
         table_name = 'carsharing'
