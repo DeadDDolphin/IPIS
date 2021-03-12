@@ -30,5 +30,9 @@ class Carsharing(BaseModel):
             for every_row in data:
                 self.create(**every_row)
 
+    #Заготовка под редактирование. Это еще необходимо
+    #обкашлять, что именно будем редачить и т.д.
+    def update(self, data):
+        query = self.update().where
     class Meta:
         table_name = 'carsharing'
