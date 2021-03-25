@@ -1,12 +1,6 @@
 from peewee import *
 from connectToDB import *
 
-db = SqliteDatabase('/home/dolph/Документы/GitHub/IPIS/Carsharing/venv/carDatabase.db', pragmas={'journal_mode': 'wal'})
-
-class BaseModel(Model):
-    class Meta:
-        database = db
-
 class Carsharing(BaseModel):
     id_client = AutoField(column_name='ID_Client')
     name = CharField(column_name='Name')

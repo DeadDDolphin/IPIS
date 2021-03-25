@@ -1,5 +1,5 @@
 from models import *
-
+from connectToDB import *
 
 
 if __name__ == '__main__':
