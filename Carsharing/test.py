@@ -21,5 +21,5 @@ if __name__ == '__main__':
 
     tmp = Carsharing()
     #tmp.add_record(data)
-    res = tmp.get_all()
+    res = tmp.get_all_tuples()
     print(res)

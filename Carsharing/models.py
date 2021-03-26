@@ -39,7 +39,7 @@ class Carsharing(BaseModel):
         row.save()
 
     #Данные получаются в виде списка словарей. Каждый элемент списка - это словарь, в котором ключи - названия полей
-    def get_all(self):
+    def get_all_dict(self):
         try:
             result = Carsharing.select()
         except DoesNotExist as de:
@@ -65,6 +65,36 @@ class Carsharing(BaseModel):
                     'trip_end_time': record.trip_end_time,
                     'car_number': record.car_number
                 }
+            )
+        return data
+
+    #Данные получаются в виде списка кортежей
+    def get_all_tuples(self):
+        try:
+            result = Carsharing.select()
+        except DoesNotExist as de:
+            error_message = "Table does not exist"
+            print(error_message)
+
+        data = []
+        for record in result:
+            data.append(
+                (
+                    record.name,
+                    record.surname,
+                    record.gender,
+                    record.phone_number,
+                    record.birth_date,
+                    record.driver_license_number,
+                    record.driving_experience,
+                    record.status,
+                    record.tariff,
+                    record.distance_to_car,
+                    record.order_date,
+                    record.trip_start_time,
+                    record.trip_end_time,
+                    record.car_number
+                )
             )
         return data
 
