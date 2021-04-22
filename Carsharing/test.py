@@ -3,8 +3,7 @@ from models import *
 if __name__ == '__main__':
 
     data = (
-        'Max',
-        'Sukhanov',
+        'Sania Kovalenko',
         'Male',
         '+79184958482',
         '11.11.2000',
@@ -19,6 +18,8 @@ if __name__ == '__main__':
     )
 
     tmp = Carsharing()
-    tmp.add_record(data)
+    print(tmp.add_record(data))
     res = tmp.get_all_tuples()
+    #tmp.delete_by_id(7)
+    tmp.change_record(data,8)
     print(res)
